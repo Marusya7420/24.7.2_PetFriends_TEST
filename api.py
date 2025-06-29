@@ -30,7 +30,6 @@ class PetFriends:
         except:
             result = res.text
         return status, result
-    #     готовый код
 
     def post_add_new_pet(self, auth_key, name, animal_type, age, pet_photo):
         """Метод отправляет на сервер данные о добавляемом питомце и возвращает статус
@@ -41,7 +40,6 @@ class PetFriends:
                 'pet_photo': (pet_photo, open(pet_photo, 'rb'), 'image/jpeg')
                 }
         headers = {'auth_key': auth_key['key']}
-        # pet_photo = {'pet_photo': (pet_photo, open(pet_photo, 'rb'), 'data:image/jpeg')}
         res = requests.post(self.base_url + 'api/pets', headers=headers, data=data)
         status = res.status_code
         result = ""
