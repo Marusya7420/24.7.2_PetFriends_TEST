@@ -1,4 +1,4 @@
-Home Work содержит: 
+24.7.2_PetFriends_TEST - Home Work содержит: 
 файл api.py 
 файл settings, где сохранены валидные и невалидные email, password
 папку tests, в которой находятся:
