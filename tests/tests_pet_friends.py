@@ -23,7 +23,7 @@ def test_get_all_pets_with_valid_key(filter=''):
     assert status == 200
     assert len(result['pets']) > 0
 
-def test_post_add_new_pet(name='Милашка', animal_type='Метис',age=1, pet_photo = 'images/cat.jpg'):
+def test_post_add_new_pet(name='Милашка', animal_type='Метис',age='1', pet_photo = 'images/cat.jpg'):
     """Проверяем что можно добавить питомца с корректными данными"""
     # Получаем полный путь изображения питомца и сохраняем в переменную pet_photo
     pet_photo = os.path.join(os.path.dirname(__file__), pet_photo)
@@ -44,7 +44,7 @@ def test_successful_delete_self_pet():
     _, my_pets = pf.get_list_of_pets(auth_key, "my_pets")
     # Проверяем - если список своих питомцев пустой, то добавляем нового и опять запрашиваем список своих питомцев
     if len(my_pets['pets']) == 0:
-        pf.add_new_pet(auth_key, "Суперкот", "кот", "3", "images/cat1.jpg")
+        pf.add_new_pet(auth_key, "Суперкот", "кот", "3", "images/cat.jpg")
         _, my_pets = pf.get_list_of_pets(auth_key, "my_pets")
     # Берём id первого питомца из списка и отправляем запрос на удаление
     pet_id = my_pets['pets'][0]['id']
@@ -74,7 +74,7 @@ def test_successful_update_pet_info(name='Милашка', animal_type='коте
     else:
         # если спиок питомцев пустой, то выкидываем исключение с текстом об отсутствии своих питомцев
         raise Exception("There is no my pets")
-# Домашнее задание - 10 дополнительных тестов 
+# Домашнее задание - 10 дополнительных тестов
 #1
 """Проверяем добавление питомца с валидными данными без фото"""
 def test_post_add_new_pet_simple(name='Rino', animal_type='хомяк обыкновенный', age=1):
@@ -99,7 +99,7 @@ def test_post_add_new_pet_simple_null_data(name="Муся", animal_type=None, ag
     _, auth_key = pf.get_api_key(valid_email, valid_password)
     _, my_pets = pf.get_list_of_pets(auth_key, "my_pets")
     status, result = pf.post_add_new_pet_simple(auth_key, name, animal_type, age)
-    assert status == 200
+    assert status == 400
 
 # 4
 """Проверяем добавление только фото питомца с валидными данными"""
