@@ -6,5 +6,5 @@
 - файл test_pet_friends.py
 
 В проект импортированы библиотеки:
-- requests, oc, pytest (импортирован в окружение по средствам командной строки: pip install pytest 7.4.4.)
+- requests, requests-toolbelt, oc, pytest (импортирован в окружение по средствам командной строки: pip install pytest 7.4.4.)
 В файл test_pet_friends.py импортированы созданная библиотека api и settings
